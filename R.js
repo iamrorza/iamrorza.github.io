@@ -8,7 +8,7 @@ function RAnimation(){
     let resumeLetters = ['e','s','u','m','e']
     let pcDivided = 0.16
 
-    let textsize = 100
+    let textsize = 100 * (windowWidth / 1080)
 
     if(millis() < clickedOnTime + R.animationTime * 0.75){
         let percent = (millis()-clickedOnTime)/(R.animationTime * 0.75)
