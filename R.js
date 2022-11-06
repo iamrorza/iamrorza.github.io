@@ -8,15 +8,26 @@ function RAnimation(){
     let resumeLetters = ['e','s','u','m','e']
     let pcDivided = 0.16
 
-    let textsize = 100 * (windowWidth / 1080)
+    
+    let textsize = mainNameTextSize
+    let offset = 85
 
+    switch(screenSize){
+        case "small":
+            offset = 40
+            break
+        case "med":
+            offset = 50
+            break
+    }
     if(millis() < clickedOnTime + R.animationTime * 0.75){
         let percent = (millis()-clickedOnTime)/(R.animationTime * 0.75)
         for(var i = 1; i <=resumeLetters.length; ++i){
             if(percent > (i-1) * pcDivided && percent < i * pcDivided)fill(0, 255 * (percent%pcDivided)/pcDivided)
             else if(percent > (i-1) * pcDivided )fill(0)
             else noFill()
-            text(resumeLetters[i-1],R.x, R.y + 85 * i)
+            textSize(textsize)
+            text(resumeLetters[i-1],R.x, R.y + offset * i)
         }
     }
     else if(millis() < clickedOnTime + R.animationTime){
@@ -29,14 +40,11 @@ function RAnimation(){
             } else {
                 textSize(textsize)
             }
-            text(resumeLetters[i-1],R.x, R.y + 85 * i)
+            text(resumeLetters[i-1],R.x, R.y + offset * i)
         }
     }
     else{
-        text("e", R.x, R.y + e1Offset)
-        text("s", R.x, R.y + sOffset)
-        text("u", R.x, R.y + uOffset)
-        text("m", R.x, R.y + mOffset)
-        text("e", R.x, R.y + e2Offset)
+        textSize(textsize)
+        for(var i = 1; i <= resumeLetters.length; ++i)text(resumeLetters[i-1], R.x, R.y + offset * i)
     }
 }
