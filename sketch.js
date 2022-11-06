@@ -1,6 +1,6 @@
 
 let mainNameTextSize = 200
-let clickedOn ='r'
+let clickedOn =''
 
 let clickedOnTime = 0
 let finishedTime = 0
